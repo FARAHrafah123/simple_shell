@@ -5,7 +5,7 @@
  *  @line_str:command line
  *  @x:length
  */
-void  handling_line(char **argv,char *line_str, size_t x,int count_command,int *exit_status)
+int  handling_line(char **argv,char *line_str, size_t x,int count_command,int *exit_status)
 {
 	ssize_t count;
 	char **arr_tok;
