@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * path_chicker- responsible for locating the full path
+ * @program : representing the name of the program
+ *  or command that needs to be found in the PATH.
+ */
+
 char *path_chicker(char *program)
 {
 	char *path_value, *path_name, *token, *path_with_slash;
@@ -24,6 +30,10 @@ char *path_chicker(char *program)
 	return (NULL);
 }
 
+/** _getenv - function searches for the value of a spc env
+ *  @name:character pointer representing the name
+ *   of the environment variable to be searched for.
+ */
 
 char *_getenv(char *name)
 {
@@ -44,11 +54,31 @@ char *_getenv(char *name)
 	}
 	return (NULL);
 }
-
+/** is_file_exist - func is used to determine if a file exists
+ *  at the specified path by checking for read permissions on the file
+ *  @path: representing the path to the file whose
+ *   existence needs to be checked.
+ */
 int is_file_exist(char *path)
 {
 	return (access(path, R_OK));
 }
+
+/**
+ * Concatenates two input strings `str1` and `str2` with a slash ('/')
+ * between them and returns the resulting path.
+ * The function dynamically allocates memory for the new path string,
+ * which must be freed by the caller to avoid memory leaks.
+ *
+ * @param str1 The first input string to be concatenated in the path.
+ * @param str2 The second input string to be concatenated in the path.
+ * @return A pointer to the dynamically allocated memory
+ * containing the concatenated path string.
+ *  If either `str1` or `str2` is NULL,
+ *  the function returns NULL to indicate an error.
+ *   The caller is responsible for freeing the allocated
+ *   memory using `free()` when it is no longer needed.
+ */
 
 char *build_path_slash(char *str1, char *str2)
 {
