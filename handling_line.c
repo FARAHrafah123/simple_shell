@@ -5,7 +5,7 @@
  *  @line_str:command line
  *  @x:length
  */
-int  handling_line(char **argv,char *line_str, size_t x,int count_command,int *exit_status)
+int handling_line(char **argv, char *line_str, size_t x, int count_command, int *exit_status)
 {
 	ssize_t count;
 	char **arr_tok;
@@ -23,7 +23,8 @@ int  handling_line(char **argv,char *line_str, size_t x,int count_command,int *e
 	else
 	{
 		arr_tok = arr_token(line_str);
-		if (arr_tok){
+		if (arr_tok)
+		{
 			if (built_in_check(argv, line_str, arr_tok, exit_status, count_command) == 0)
 			{
 				*exit_status = execute_program(arr_tok, argv, count_command);
