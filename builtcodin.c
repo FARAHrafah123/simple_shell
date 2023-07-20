@@ -1,5 +1,14 @@
 #include "shell.h"
 
+/**
+ * built_in_check: Check giv comand of built-in commands defined in array.
+ * argv: contains the arguments passed to the main program.
+ * command: Pointer string represents the command entered by the user.
+ * arr_tok: Pointer array of strings that contain tokenized comnd argumts.
+ * exit_status: Pointer  integer variable the exit status of the program.
+ * n_count: Integer representing tot number of commands executed.
+ */
+
 int built_in_check(char **argv, char *command, char **arr_tok, int *exit_status, int n_count)
 {
 	int i = 0;
@@ -20,6 +29,15 @@ int built_in_check(char **argv, char *command, char **arr_tok, int *exit_status,
 	}
 	return (0);
 }
+
+/**
+ * exit_builtin: Handling the exit built-in command in a command-line shell program.
+ * argv: Contains the arguments passed to the main program.
+ * command: Pointer string represents the command entered by the user. 
+ * arr_tok: This is a pointer to an array of strings that contains tokenized command arguments. 
+ * exit_status: This is a pointer to an integer variable that holds the exit status of the program.
+ * n: Integer representing  total number of commands executed so far.
+ */
 
 void exit_builtin(char **argv, char *command, char **arr_tok, int *exit_status, int n)
 {
@@ -45,14 +63,14 @@ void exit_builtin(char **argv, char *command, char **arr_tok, int *exit_status, 
 		num = _atoi(arr_tok[1]);
 		if (num < 0)
 		{
-				print_error(argv[0]);
-				print_error(": ");
-				print_integer(n);
-				print_error(": exit: Illegal number: ");
-				print_error(arr_tok[1]);
-				print_error("\n");
-				free_comand_array(command, arr_tok);
-				exit(2);
+			print_error(argv[0]);
+			print_error(": ");
+			print_integer(n);
+			print_error(": exit: Illegal number: ");
+			print_error(arr_tok[1]);
+			print_error("\n");
+			free_comand_array(command, arr_tok);
+			exit(2);
 		}
 		free_comand_array(command, arr_tok);
 		exit(num);
@@ -61,6 +79,15 @@ void exit_builtin(char **argv, char *command, char **arr_tok, int *exit_status, 
 	free_comand_array(command, arr_tok);
 	exit(*exit_status);
 }
+
+/**
+ * env_builtin: Handling the env built-in command in a command-line shell program.
+ * argv: Contains the arguments passed to the main program.
+ * command: Pointer string represents the command entered by the user.
+ * arr_tok: This is a pointer to an array of strings that contains tokenized command arguments.
+ * exit_status: This is a pointer to an integer variable that holds the exit status of the program.
+ * n: Integer representing  total number of commands executed so far.
+ */
 
 void env_builtin(char **argv, char *command, char **arr_tok, int *exit_status, int n)
 {
