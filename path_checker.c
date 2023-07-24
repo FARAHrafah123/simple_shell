@@ -1,9 +1,11 @@
 #include "shell.h"
 
 /**
- * path_chicker- responsible for locating the full path
+ *path_chicker - responsible for locating the full path
  * @program : representing the name of the program
  *  or command that needs to be found in the PATH.
+ *  Return: a dynamically allocated string
+ *  containing the full path or NULL
  */
 
 char *path_chicker(char *program)
@@ -30,9 +32,12 @@ char *path_chicker(char *program)
 	return (NULL);
 }
 
-/** _getenv - function searches for the value of a spc env
- *  @name:character pointer representing the name
- *   of the environment variable to be searched for.
+/**
+ * _getenv - function searches for the value of a spc env
+ * @name:character pointer representing the name
+ * of the environment variable to be searched for.
+ * Return: a dynamically allocated string containing
+ * its value If the environment variable is found or null
  */
 
 char *_getenv(char *name)
@@ -54,10 +59,13 @@ char *_getenv(char *name)
 	}
 	return (NULL);
 }
-/** is_file_exist - func is used to determine if a file exists
+/**
+ * is_file_exist - func is used to determine if a file exists
  *  at the specified path by checking for read permissions on the file
  *  @path: representing the path to the file whose
  *   existence needs to be checked.
+ *   Return:0 If the file exists and can be accessed
+ * with read permission -1 is not
  */
 int is_file_exist(char *path)
 {
@@ -65,19 +73,16 @@ int is_file_exist(char *path)
 }
 
 /**
- * Concatenates two input strings `str1` and `str2` with a slash ('/')
- * between them and returns the resulting path.
- * The function dynamically allocates memory for the new path string,
- * which must be freed by the caller to avoid memory leaks.
- *
- * @param str1 The first input string to be concatenated in the path.
- * @param str2 The second input string to be concatenated in the path.
- * @return A pointer to the dynamically allocated memory
- * containing the concatenated path string.
- *  If either `str1` or `str2` is NULL,
- *  the function returns NULL to indicate an error.
- *   The caller is responsible for freeing the allocated
- *   memory using `free()` when it is no longer needed.
+ * build_path_slash  - constructs a new string by concatenating
+ * two strings with a '/' character in between them.
+ * @str1 :The first part of the new path.
+ * @str2 :The second part of the new path.
+ * @return A pointer to the new string if both str1 and str2
+ * are not NULL and memory allocation succeeds.
+ *         Otherwise, it returns NULL if either str1 or str2
+ *          is NULL or memory allocation fails.
+ *         The caller is responsible for freeing the memory
+ *         of the returned string when done using it.
  */
 
 char *build_path_slash(char *str1, char *str2)
