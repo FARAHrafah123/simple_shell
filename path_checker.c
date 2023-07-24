@@ -77,7 +77,7 @@ int is_file_exist(char *path)
  * two strings with a '/' character in between them.
  * @str1 :The first part of the new path.
  * @str2 :The second part of the new path.
- * @return A pointer to the new string if both str1 and str2
+ * Return: A pointer to the new string if both str1 and str2
  * are not NULL and memory allocation succeeds.
  *         Otherwise, it returns NULL if either str1 or str2
  *          is NULL or memory allocation fails.
