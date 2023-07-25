@@ -128,19 +128,19 @@ int execute_program(char **arr_tok, char **argv, int count_command)
 	child_pid = fork();
 	if (child_pid == 0)
 	{
-		path_built = path_finder(arr_tok[0]);
+		path_built = path_checker(arr_tok[0]);
 		if (path_built)
 		{
 			if (execve(path_built, arr_tok, environ) == -1)
 			{
-				print_error_line_str(argv[0], arr_tok[0], count_command);
+				print_error_string(argv[0], arr_tok[0], count_command);
 				exit(127);
 			}
 			free(path_built);
 		}
 		else
 		{
-			print_error_line_str(argv[0], arr_tok[0], count_command);
+			print_error_string(argv[0], arr_tok[0], count_command);
 			exit(127);
 		}
 	}

@@ -38,8 +38,8 @@ int _isalpha(int c);
 
 
 
-/**paht_checker**/
-char *paht_checker(char *program);
+/**path_checker**/
+char *path_checker(char *program);
 char *_getenv(char *name);
 int is_file_exist(char *path);
 char *build_path_slash(char *str1, char *str2);
