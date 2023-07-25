@@ -1,11 +1,16 @@
 #include "shell.h"
 /**
- *  handling_line -parsing command
- *  @argv:content of arguments
- *  @line_str:command line
- *  @x:length
+ * handling_line- parsing command
+ *  @argv: content of arguments
+ *  @line_str: command line
+ *  @x: length
+ *  @count_command: The count of commands processed or executed.
+ *  @exit_status: A pointer to an integer that stores the exit status
+ *  Return: Integer which is updated exit status
  */
-int handling_line(char **argv, char *line_str, size_t x, int count_command, int *exit_status)
+
+int handling_line(char **argv, char *line_str, size_t x,
+		int count_command, int *exit_status)
 {
 	ssize_t count;
 	char **arr_tok;
@@ -25,7 +30,8 @@ int handling_line(char **argv, char *line_str, size_t x, int count_command, int 
 		arr_tok = arr_token(line_str);
 		if (arr_tok)
 		{
-			if (built_in_check(argv, line_str, arr_tok, exit_status, count_command) == 0)
+			if (built_in_check(argv, line_str, arr_tok,
+						exit_status, count_command) == 0)
 			{
 				*exit_status = execute_program(arr_tok, argv, count_command);
 			}
@@ -34,6 +40,14 @@ int handling_line(char **argv, char *line_str, size_t x, int count_command, int 
 	}
 	return (*exit_status);
 }
+
+/**
+ *count_tokens- Function count the number of tokens in given comand line input
+ *@line_str:  A pointer to a character array containing
+ *the command line input that needs to be tokenized
+ *Return: The number of tokens found in the input line_str.
+ */
+
 int count_tokens(char *line_str)
 {
 	char *line_str2;
@@ -50,6 +64,13 @@ int count_tokens(char *line_str)
 	free(line_str2);
 	return (i);
 }
+/**
+ *arr_token- Tokenizes a given input string into individual tokens.
+ *@line_str: A pointer to a character array containing
+ *the command line input that needs to be tokenized.
+ *Return: A double pointer to a dynamically allocated array
+ *of strings containing the tokenized command and its arguments.
+ */
 
 char **arr_token(char *line_str)
 {
@@ -89,6 +110,14 @@ char **arr_token(char *line_str)
 
 	return (arr_tok);
 }
+
+/**
+ *execute_program- Function for executing an command.
+ *@arr_tok: Array of strings containing the tokenized command and its argument
+ *@argv: Array of strings representing the arguments.
+ *@count_command: The count of commands processed or executed.
+ *Return: Integer representing the exit status if successful or an error code.
+ */
 
 int execute_program(char **arr_tok, char **argv, int count_command)
 {

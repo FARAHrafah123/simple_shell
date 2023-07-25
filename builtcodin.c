@@ -1,15 +1,17 @@
 #include "shell.h"
-
 /**
  * built_in_check: Check giv comand of built-in commands defined in array.
- * argv: contains the arguments passed to the main program.
- * command: Pointer string represents the command entered by the user.
- * arr_tok: Pointer array of strings that contain tokenized comnd argumts.
- * exit_status: Pointer  integer variable the exit status of the program.
- * n_count: Integer representing tot number of commands executed.
+ * @argv: contains the arguments passed to the main program.
+ * @command: Pointer string represents the command entered by the user.
+ * @arr_tok: Pointer array of strings that contain tokenized comnd argumts.
+ * @exit_status: Pointer  integer variable the exit status of the program.
+ * @n_count: Integer representing tot number of commands executed.
+ * Return: Value 1 if command is a built-in command has successfully,
+ * 0 if command not built-in is not successfully
  */
 
-int built_in_check(char **argv, char *command, char **arr_tok, int *exit_status, int n_count)
+int built_in_check(char **argv, char *command,
+		char **arr_tok, int *exit_status, int n_count)
 {
 	int i = 0;
 	builtin_t fun[] = {
@@ -29,17 +31,16 @@ int built_in_check(char **argv, char *command, char **arr_tok, int *exit_status,
 	}
 	return (0);
 }
-
 /**
- * exit_builtin: Handling the exit built-in command in a command-line shell program.
- * argv: Contains the arguments passed to the main program.
- * command: Pointer string represents the command entered by the user. 
- * arr_tok: This is a pointer to an array of strings that contains tokenized command arguments. 
- * exit_status: This is a pointer to an integer variable that holds the exit status of the program.
- * n: Integer representing  total number of commands executed so far.
+ *exit_builtin:Handling the exit built-in command in a command-line
+ *@argv:Contains the arguments passed to the main program
+ *@command:Pointer string represents the command entered by the user.
+ *@arr_tok:Pointer to an array of strings that contains tokenized command arg
+ *@exit_status:Pointer to integer variable that holds the exit status program
+ *@n:Integer representing total number of commands executed so far.
  */
-
-void exit_builtin(char **argv, char *command, char **arr_tok, int *exit_status, int n)
+void exit_builtin(char **argv, char *command,
+		char **arr_tok, int *exit_status, int n)
 {
 	int num = 0, i = 0;
 
@@ -81,15 +82,16 @@ void exit_builtin(char **argv, char *command, char **arr_tok, int *exit_status, 
 }
 
 /**
- * env_builtin: Handling the env built-in command in a command-line shell program.
- * argv: Contains the arguments passed to the main program.
- * command: Pointer string represents the command entered by the user.
- * arr_tok: This is a pointer to an array of strings that contains tokenized command arguments.
- * exit_status: This is a pointer to an integer variable that holds the exit status of the program.
- * n: Integer representing  total number of commands executed so far.
+ * env_builtin: Handling the env built-in command in a command-line
+ * @argv: Contains the arguments passed to the main program.
+ * @command: Pointer string represents the command entered by the user.
+ * @arr_tok: Pointer to array of strings that contains tokenized comnd argumen
+ * @exit_status: Pointer to integer variable that holds the exit status
+ * @n: Integer representing  total number of commands executed so far
  */
 
-void env_builtin(char **argv, char *command, char **arr_tok, int *exit_status, int n)
+void env_builtin(char **argv, char *command,
+		char **arr_tok, int *exit_status, int n)
 {
 	int i = 0;
 	(void) command;
