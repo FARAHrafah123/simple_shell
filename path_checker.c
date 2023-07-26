@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- *path_chicker - responsible for locating the full path
+ *path_checker - responsible for locating the full path
  * @program : representing the name of the program
  *  or command that needs to be found in the PATH.
  *  Return: a dynamically allocated string
  *  containing the full path or NULL
  */
 
-char *path_chicker(char *program)
+char *path_checker(char *program)
 {
 	char *path_value, *path_name, *token, *path_with_slash;
 

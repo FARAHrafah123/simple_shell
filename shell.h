@@ -16,7 +16,7 @@ typedef struct built_in
 } builtin_t;
 
 /**handling_line**/
-int handling_line(char **argv,char *line_str, size_t x,int count_command,int *exit_status);
+int handling_line(char *line_str, size_t x, char **argv, int count_command, int *exit_status);
 int count_tokens(char *line_str);
 char **arr_token(char *line_str);
 int execute_program(char **arr_tok, char **argv, int count_command);

@@ -9,7 +9,7 @@
  *  Return: Integer which is updated exit status
  */
 
-int handling_line(char **argv, char *line_str, size_t x,
+int handling_line(char *line_str, size_t x, char **argv,
 		int count_command, int *exit_status)
 {
 	ssize_t count;
