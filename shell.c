@@ -5,7 +5,7 @@
  * @argv:content of arguments
  * Return: value 0
  */
-int main(_attribute_((unused)) int argc,char **argv)
+int main(__attribute__((unused)) int argc,char **argv)
 {
 	char *line_str=NULL;
 	int exit_status=0;
