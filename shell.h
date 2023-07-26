@@ -8,15 +8,23 @@
 #include <string.h>
 
 extern char **environ;
-
+/**
+ * struct built_in - Represents a built-in
+ * command and its corresponding function.
+ * @s: A string representing the name of the built-in command.
+ * @f: A function pointer to the corresponding built-in command function.
+ *
+ */
 typedef struct built_in
 {
 	char *s;
-	void (*f)(char **argv, char *command, char **arr_tok, int *exit_status, int n);
+	void (*f)(char **argv, char *command,
+			char **arr_tok, int *exit_status, int n);
 } builtin_t;
 
 /**handling_line**/
-int handling_line(char *line_str, size_t x, char **argv, int count_command, int *exit_status);
+int handling_line(char *line_str, size_t x, char **argv,
+		int count_command, int *exit_status);
 int count_tokens(char *line_str);
 char **arr_token(char *line_str);
 int execute_program(char **arr_tok, char **argv, int count_command);
@@ -49,9 +57,12 @@ void print_error_string(char *name, char *command, int count_command);
 void print_error(char *str);
 
 /**builtcodin**/
-int built_in_check(char **argv, char *command, char **arr_tok, int *exit_status, int n_count);
-void exit_builtin(char **argv, char *command, char **arr_tok, int *exit_status, int n);
-void env_builtin(char **argv, char *command, char **arr_tok, int *exit_status, int n);
+int built_in_check(char **argv, char *command,
+		char **arr_tok, int *exit_status, int n_count);
+void exit_builtin(char **argv, char *command,
+		char **arr_tok, int *exit_status, int n);
+void env_builtin(char **argv, char *command,
+		char **arr_tok, int *exit_status, int n);
 
 
 #endif
